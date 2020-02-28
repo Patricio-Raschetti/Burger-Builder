@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import BurgerIngredient from '../../components/Burger/BurgerIngredient/BurgerIngredient';
 
 class BurgerBuilder extends Component {
 
     render() {
         return (
             <>
-                <div>
-                    Placeholder: Burger preview.
-                </div>
+                <BurgerIngredient type='bread-top' />
+                <BurgerIngredient type='cheese' />
+                <BurgerIngredient type='meat' />
+                <BurgerIngredient type='bread-bottom' />
                 <div>
                     Placeholder: Build controls.
                 </div>
