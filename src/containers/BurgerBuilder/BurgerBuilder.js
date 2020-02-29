@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
-import BurgerIngredient from '../../components/Burger/BurgerIngredient/BurgerIngredient';
+import Burger from '../../components/Burger/Burger';
+
 
 class BurgerBuilder extends Component {
+    state = {
+        ingredients: {
+            salad: 1,
+            bacon: 1,
+            cheese: 2,
+            meat: 2
+        }
+    };
 
     render() {
         return (
             <>
-                <BurgerIngredient type='bread-top' />
-                <BurgerIngredient type='cheese' />
-                <BurgerIngredient type='meat' />
-                <BurgerIngredient type='bread-bottom' />
+                <Burger ingredients={this.state.ingredients} />
                 <div>
                     Placeholder: Build controls.
                 </div>
