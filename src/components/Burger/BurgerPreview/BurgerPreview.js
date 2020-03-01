@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Burger.module.css';
-import BurgerIngredient from '../../components/Burger/BurgerIngredient/BurgerIngredient';
+import styles from './BurgerPreview.module.css';
+import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const Burger = props => {
     let transformedIngredients = [];
