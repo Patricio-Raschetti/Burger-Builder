@@ -17,7 +17,13 @@ class BurgerBuilder extends Component {
             cheese: 0,
             meat: 0
         },
-        totalPrice: 4
+        totalPrice: 4,
+        purchasable: false
+    };
+
+    updatePurchaseState() {
+        const isPurchasable = Object.values(this.state.ingredients).some(value => value > 0);
+        this.setState({ purchasable: isPurchasable });
     };
 
     addIngredientHandler = type => {
@@ -25,27 +31,26 @@ class BurgerBuilder extends Component {
             return {
                 ingredients: {
                     ...prevState.ingredients,
-                    [type]: ++prevState.ingredients[type]
+                    [type]: prevState.ingredients[type] + 1
                 },
-                totalPrice: parseFloat((prevState.totalPrice + INGREDIENT_PRICES[type]).toFixed(2))
+                totalPrice: +((prevState.totalPrice + INGREDIENT_PRICES[type]).toFixed(2))
             };
-        });
+        }, this.updatePurchaseState);
     };
 
     removeIngredientHandler = type => {
         if (this.state.ingredients[type] <= 0) {
             return;
         };
-
         this.setState(prevState => {
             return {
                 ingredients: {
                     ...prevState.ingredients,
-                    [type]: --prevState.ingredients[type]
+                    [type]: prevState.ingredients[type] - 1
                 },
-                totalPrice: parseFloat((prevState.totalPrice - INGREDIENT_PRICES[type]).toFixed(2))
+                totalPrice: +((prevState.totalPrice - INGREDIENT_PRICES[type]).toFixed(2))
             };
-        });
+        }, this.updatePurchaseState);
     };
 
     render() {
@@ -63,6 +68,7 @@ class BurgerBuilder extends Component {
                     addIngredient={this.addIngredientHandler}
                     removeIngredient={this.removeIngredientHandler}
                     disabled={disabledInfo}
+                    purchasable={this.state.purchasable}
                     price={this.state.totalPrice}
                 />
             </>
