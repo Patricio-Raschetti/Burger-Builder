@@ -18,3 +18,14 @@
         left: calc(50% - 250px);
     }
 }
+
+@keyframes animModal {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

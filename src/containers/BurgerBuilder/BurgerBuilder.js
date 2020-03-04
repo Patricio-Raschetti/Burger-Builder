@@ -61,6 +61,10 @@ class BurgerBuilder extends Component {
         this.setState({ purchasing: true });
     };
 
+    purchaseCancelHandler = () => {
+        this.setState({ purchasing: false })
+    };
+
     render() {
         // Disable 'Less' btns logic.
         const disabledInfo = { ...this.state.ingredients };
@@ -80,7 +84,10 @@ class BurgerBuilder extends Component {
                     ordered={this.purchaseHandler}
                     price={this.state.totalPrice}
                 />
-                <Modal show={this.state.purchasing}>
+                <Modal
+                    show={this.state.purchasing}
+                    modalClosed={this.purchaseCancelHandler}
+                >
                     <OrderSummary ingredients={this.state.ingredients} />
                 </Modal>
             </>
