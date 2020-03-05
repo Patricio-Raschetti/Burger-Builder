@@ -5,9 +5,7 @@ import styles from './Layout.module.css';
 const Layout = props => (
     <>
         <Toolbar />
-        <main className={styles.Content}>
-            {props.children}
-        </main>
+        <main className={styles.Content}>{props.children}</main>
     </>
 );
 
