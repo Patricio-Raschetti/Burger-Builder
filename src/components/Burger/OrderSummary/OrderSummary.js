@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../../UI/Button/Button';
+import PropTypes from 'prop-types';
 
 const OrderSummary = props => {
     const ingredientSummary = Object.keys(props.ingredients)
@@ -34,5 +35,12 @@ const OrderSummary = props => {
         </>
     );
 };
+
+OrderSummary.propTypes = {
+    ingredients: PropTypes.object.isRequired,
+    price: PropTypes.number.isRequired,
+    purchaseCancelled: PropTypes.func.isRequired,
+    purchaseContinued: PropTypes.func.isRequired
+}
 
 export default OrderSummary; 

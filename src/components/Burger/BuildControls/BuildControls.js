@@ -1,6 +1,7 @@
 import React from 'react';
 import BuildControl from './BuildControl/BuildControl';
 import styles from './BuildControls.module.css';
+import PropTypes from 'prop-types';
 
 const BuildControls = props => (
     <div className={styles.BuildControls}>
@@ -22,5 +23,15 @@ const BuildControls = props => (
         >ORDER NOW</button>
     </div>
 );
+
+BuildControls.propTypes = {
+    price: PropTypes.number.isRequired,
+    ingredients: PropTypes.object.isRequired,
+    addIngredient: PropTypes.func.isRequired,
+    removeIngredient: PropTypes.func.isRequired,
+    disabled: PropTypes.object.isRequired,
+    purchasable: PropTypes.bool.isRequired,
+    ordered: PropTypes.func.isRequired
+}
 
 export default BuildControls;

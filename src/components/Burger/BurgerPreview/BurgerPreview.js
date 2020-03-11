@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './BurgerPreview.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
+import PropTypes from 'prop-types';
 
 const Burger = props => {
     let transformedIngredients = [];
@@ -22,6 +23,10 @@ const Burger = props => {
         </div>
     );
 };
+
+Burger.propTypes = {
+    ingredients: PropTypes.object.isRequired
+}
 
 export default Burger;
 
