@@ -27,6 +27,9 @@ class BurgerBuilder extends Component {
 
     updatePurchaseState() {
         const isPurchasable = Object.values(this.state.ingredients).some(value => value > 0);
+        // if (this.state.purchasable === isPurchasable) {
+        //     return null;
+        // };
         this.setState({ purchasable: isPurchasable });
     };
 
