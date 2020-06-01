@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+
+import axios from '../../axios-orders';
+
 import BurgerPreview from '../../components/Burger/BurgerPreview/BurgerPreview';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Modal from '../../components/UI/Modal/Modal';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 
 const INGREDIENT_PRICES = {
@@ -20,9 +24,10 @@ class BurgerBuilder extends Component {
             cheese: 0,
             meat: 0
         },
-        totalPrice: 4,
+        totalPrice: 4,          // I should calculate the price inside of the server and not in the front-end.
         purchasable: false,
-        purchasing: false
+        purchasing: false,
+        loading: false
     };
 
     updatePurchaseState() {
@@ -69,7 +74,24 @@ class BurgerBuilder extends Component {
     };
 
     purchaseContinueHandler = () => {
-        alert('You continue the purchase!');
+        const order = {
+            ingredients: this.state.ingredients,
+            price: this.state.totalPrice,            // Remember to calculate the price in the server for a real app.
+            customer: {                             // Dummy data just to create the Firebase Collection.
+                name: 'Dummy Customer',
+                address: {
+                    street: 'Teststreet 123',
+                    zipCode: '4567',
+                    country: 'Dummyland'
+                },
+                email: 'dummyemail@testing.com'
+            },
+            deliveryMethod: 'fatest'
+        }
+
+        axios.post('/orders.json', order)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
     };
 
     render() {
