@@ -3,8 +3,8 @@ import styles from './Modal.module.css';
 import Backdrop from '../Backdrop/Backdrop';
 import PropTypes from 'prop-types';
 
-const showAreEqual = (prev, next) => {
-    return prev.show === next.show;
+const showOrChildrenAreEqual = (prev, next) => {
+    return prev.show === next.show && prev.children === next.children;
 }
 
 const Modal = props => {
@@ -37,4 +37,4 @@ Modal.propTypes = {
     children: PropTypes.element.isRequired
 }
 
-export default React.memo(Modal, showAreEqual);
+export default React.memo(Modal, showOrChildrenAreEqual);
