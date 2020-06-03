@@ -10,7 +10,6 @@ const Backdrop = props => (
 );
 
 Backdrop.propTypes = {
-    show: PropTypes.bool.isRequired,
     clicked: PropTypes.func.isRequired
 }
 

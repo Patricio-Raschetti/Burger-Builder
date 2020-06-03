@@ -32,9 +32,7 @@ const Modal = props => {
 };
 
 Modal.propTypes = {
-    show: PropTypes.bool.isRequired,
-    modelClosed: PropTypes.func,
-    children: PropTypes.element.isRequired
+    modelClosed: PropTypes.func
 }
 
 export default React.memo(Modal, showOrChildrenAreEqual);
