@@ -29,7 +29,7 @@ class BurgerBuilder extends Component {
     };
 
     componentDidMount() {
-        axios.get('https://prasch-burger-builder.firebaseio.com/ingredients.json')
+        axios.get('ingredients.json')
             .then(response => {
                 this.setState({ ingredients: response.data });
             })
@@ -97,7 +97,7 @@ class BurgerBuilder extends Component {
             deliveryMethod: 'fatest'
         }
 
-        axios.post('/orders.json', order)
+        axios.post('orders.json', order)
             .then(response => this.setState({ loading: false, purchasing: false }))
             .catch(error => this.setState({ loading: false, purchasing: false }));
     };
